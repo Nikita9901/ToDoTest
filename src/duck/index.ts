@@ -1,0 +1,5 @@
+export{default as logo} from "./logo.svg"
+export{default as UserArrowImage} from "./UserArrow.svg"
+export {default as UserAvatarImage} from "./UserAvatar.svg"
+export {default as TasksImage} from "./Tasks.svg"
+export {default as GarbageImage} from "./GarbageImage.svg"

@@ -1,0 +1,80 @@
+.LogoAndText{
+    font-size: 6px;
+    padding-left: 17px;
+    width: 35px;
+}
+.title{
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 24px;
+    padding-right: 25px;
+}
+.user{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 27px;
+}
+.layout{
+    position: absolute;
+    display: flex;
+    margin-top: 64px;
+    width: 100%;
+    left:0;
+    top:0;
+
+    flex-wrap: wrap;
+}
+.content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-left: 76px;
+    margin-right: 64px;
+    margin-top: 24px;
+    z-index: 1;
+}
+.comleted{
+    display: flex;
+    min-width: 400px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: 24px;
+    margin-top: 24px;
+    flex-direction: column;
+    z-index: 1;
+}
+.inputStyle{
+    width: 100%;
+}
+
+.button{
+    display: flex;
+    margin-left: 8px;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    width: 50px;
+    height: 40px;
+    left: 1178px;
+    top: 0;
+
+    /* Primary */
+    background: #550DC9;
+    border-radius: 4px;
+
+
+}
+
+@media screen and (max-width: 923px) {
+    .content{
+        max-width: 100%;
+        width: 100%;
+        margin-right: 24px;
+    }
+    .comleted{
+        margin-left: 76px;
+        width: 100%;
+    }
+
+}

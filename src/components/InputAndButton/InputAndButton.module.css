@@ -1,0 +1,23 @@
+.button{
+    display: flex;
+    margin-left: 8px;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    width: 50px;
+    height: 40px;
+    left: 1178px;
+    top: 0;
+    font-family: Open Sans, Serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    /* Primary */
+    background: #550DC9;
+    border-radius: 4px;
+}
+.inputStyle{
+    width: 100%;
+    border: 1px solid #ECECEC;
+    border-radius: 4px;
+}
