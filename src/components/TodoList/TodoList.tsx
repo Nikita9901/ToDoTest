@@ -54,7 +54,7 @@ const TodoList: React.FC<TodoListProps>=({todos})=>{
                 <ul className={styles.ulStyle} style={{ listStyle: 'none', margin: 0, padding: 0}}>
                     {todos.map((todo,index)=>{
                         return(
-                            <div>
+                            <div key={todo.id}>
                                 <TodoItem todo={todo} index={index}/>
                             </div>
 

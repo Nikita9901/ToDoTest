@@ -3,6 +3,10 @@
     padding-left: 17px;
     width: 35px;
 }
+.LogoAndText:hover{
+    filter: brightness(80%);
+    cursor: pointer;
+}
 .title{
     font-size: 16px;
     font-weight: 700;
@@ -48,6 +52,11 @@
     width: 100%;
 }
 
+.userImages:hover{
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
 .button{
     display: flex;
     margin-left: 8px;
@@ -64,6 +73,16 @@
     border-radius: 4px;
 
 
+}
+
+.sideBarButton{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    height: 32px;
+    background-color: #440BA0;
 }
 
 @media screen and (max-width: 923px) {

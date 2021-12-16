@@ -68,23 +68,19 @@ const TodoItem: React.FC<TodoItemProps>=({todo, index})=>{
     const {removeTodo} = useContext(Context)
     const {toggleTodo} = useContext(Context)
     const {addTodoCompleted} = useContext(Context)
-    let classes = []
-    if (todo.completed){
-        classes.push('done');
-    }
-    else{
-        classes = [];
-    }
     if(todo!=null) {
         return (
             <li className={styles.item}>
-                <span style={{display:"flex", alignItems: "center"} } className={classes.join(' ')}>
+                <span style={{display:"flex", alignItems: "center"} }>
                     <div>
                         <label className={styles.checkbox}>
-                            <input className={styles.checkboxInput} type="checkbox" onChange={()=>{
-                                toggleTodo(todo.id)}
-
-                            }/>
+                            <input
+                                className={styles.checkboxInput}
+                                type="checkbox"
+                                onChange={()=>{
+                                    toggleTodo(todo.id)}}
+                                checked={false}
+                            />
                             <span className={styles.checkboxCheckmarkBox}>
                                 <span className={styles.checkboxCheckmark}></span>
                             </span>

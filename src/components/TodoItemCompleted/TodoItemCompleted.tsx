@@ -17,14 +17,10 @@ interface TodoItemCompletedProps{
 const TodoItemCompleted: React.FC<TodoItemCompletedProps>=({todo})=>{
     const {removeTodoCompleted} = useContext(Context)
     const {toggleTodoCompleted} = useContext(Context)
-    let classes = ['']
-    if (!todo.completed){
-        classes = [];
-    }
     if(todo!=null) {
         return (
             <li className={styles.item}>
-                <span style={{display:"flex", alignItems: "center"} } className={classes.join(' ')}>
+                <span style={{display:"flex", alignItems: "center"} } className={styles.done}>
                     <div>
                         <label className={styles.checkbox}>
                             <input className={styles.checkboxInput} type="checkbox" checked={true} onChange={()=>toggleTodoCompleted(todo.id)}/>

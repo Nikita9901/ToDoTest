@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from "./TodoListCompleted.module.css";
-import {TodoItem} from "../index";
-//import todosData from "../../app/data/todos";
+import {TodoItemCompleted} from "../index";
 
 interface todo{
     id:number,
@@ -22,8 +21,8 @@ const TodoListCompleted: React.FC<TodoListCompletedProps>=({todos})=>{
                 <ul className={styles.ulStyle} style={{ listStyle: 'none', margin: 0, padding: 0}}>
                     {todos.map((todo,index)=>{
                         return(
-                            <div>
-                                <TodoItem todo={todo} index={index}/>
+                            <div key={todo.id}>
+                                <TodoItemCompleted todo={todo} index={index}/>
                             </div>
 
                         )

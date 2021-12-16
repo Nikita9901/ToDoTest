@@ -1,34 +1,29 @@
 import * as React from 'react';
 import styles from './App.module.css';
-import {Text, Header, Sidebar, TodoList, AddTodo} from "../components"
-import {logo, UserArrowImage, UserAvatarImage} from "../duck";
+import {Text, Header, Sidebar, TodoList, AddTodo, TodoListCompleted} from "../components"
+import {logo, UserArrowImage, UserAvatarImage, TasksImage} from "../duck";
 import Context from "./context";
 
 
 function App() {
     const [todos, setTodos] = React.useState([
         {
-            id:0,
+            id:1,
             description:'Add Icon to Dashboard ',
             completed:false,
         },
         {
-            id:1,
+            id:2,
             description:'Create To-Do List ',
             completed:false,
         },
         {
-            id:2,
+            id:3,
             description:'Add Icon to Das ',
             completed:false,
         }
     ]);
     const [todosCompleted, setTodosCompleted] = React.useState([
-        {
-            id:3,
-            description:'Add Icon to Dashboard',
-            completed:true,
-        },
         {
             id:4,
             description:'Add Icon to Dashboard',
@@ -36,6 +31,11 @@ function App() {
         },
         {
             id:5,
+            description:'Add Icon to Dashboard',
+            completed:true,
+        },
+        {
+            id:6,
             description:'Add Icon to Dashboard',
             completed:true,
         }
@@ -72,27 +72,29 @@ function App() {
         setTodos(
             todos.map(todo =>{
                 if (todo.id === id){
-                    todo.completed = !todo.completed;
                     addTodoCompleted(todo.description);
-                    removeTodo(todo.id);
                 }
                 return todo;
             })
         )
+        removeTodo(id);
     }
     function toggleTodoCompleted(id:number){
 
         setTodosCompleted(
             todosCompleted.map(todo =>{
                 if (todo.id === id){
-                    todo.completed = !todo.completed
+
+                    addTodo(todo.description);
+
                 }
                 return todo;
             })
         )
+        removeTodoCompleted(id);
     }
   return (
-      <Context.Provider value={{removeTodo,addTodo, addTodoCompleted, toggleTodo, toggleTodoCompleted, removeTodoCompleted}}>
+      <Context.Provider value={{removeTodoCompleted, removeTodo,addTodo, addTodoCompleted, toggleTodo, toggleTodoCompleted}}>
     <div className="App">
         <Header>
             <div className={styles.LogoAndText}>
@@ -108,13 +110,16 @@ function App() {
                 <Text>
                     <div style={{margin:3}}>Leanne Graham</div>
                 </Text>
-                <img alt={"UserAvatarImage"} src={UserAvatarImage} style={{margin:5}}/>
-                <img alt={"UserArrowImage"} src={UserArrowImage} style={{margin:6}}/>
+                <img className={styles.userImages} alt={"UserAvatarImage"} src={UserAvatarImage} style={{margin:5}}/>
+                <img className={styles.userImages} alt={"UserArrowImage"} src={UserArrowImage} style={{margin:6}}/>
             </div>
         </Header>
         <div className={styles.layout}>
             <div>
                 <Sidebar>
+                    <div className={styles.sideBarButton}>
+                        <img src={TasksImage}/>
+                    </div>
 
                 </Sidebar>
             </div>
@@ -122,7 +127,7 @@ function App() {
                 <AddTodo onCreate={addTodo}/>
                 <div style={{width: "fit-content", fontSize:12, padding:4, marginTop:8, background: "#FEF6FF"}}>
                     <Text colorT={"#550DC9"}>
-                        Total:
+                        Total: {todos.length}
                     </Text>
                 </div>
                 <div style={{fontSize: 16, marginTop:16, marginBottom: 8, fontWeight: 600}}>
@@ -136,11 +141,11 @@ function App() {
             </div>
             <div className={styles.comleted}>
                 <div style={{fontSize: 16, fontWeight: 600, marginBottom:8}}>
-                    Completed
+                    Completed({todosCompleted.length})
                 </div>
                 <div>
 
-                    {todosCompleted.length ? <TodoList todos={todosCompleted}/> : <p>No completed todos</p>}
+                    {todosCompleted.length ? <TodoListCompleted todos={todosCompleted}/> : <p>No completed todos</p>}
 
                 </div>
             </div>
