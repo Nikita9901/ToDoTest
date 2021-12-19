@@ -50,15 +50,16 @@ TodoItem.propTypes = {
 }*/
 import React, {useContext} from 'react'
 import styles from "./TodoItem.module.css"
-import {GarbageImage} from "../../duck";
+import {GarbageImage, EditImage} from "../../assets";
 import Context from "../../app/context";
 
 
 
 interface TodoItemProps{
     todo:{
+        userId:number,
         id:number,
-        description:string,
+        title:string,
         completed:boolean,
     },
     index:number;
@@ -67,7 +68,6 @@ interface TodoItemProps{
 const TodoItem: React.FC<TodoItemProps>=({todo, index})=>{
     const {removeTodo} = useContext(Context)
     const {toggleTodo} = useContext(Context)
-    const {addTodoCompleted} = useContext(Context)
     if(todo!=null) {
         return (
             <li className={styles.item}>
@@ -88,9 +88,10 @@ const TodoItem: React.FC<TodoItemProps>=({todo, index})=>{
                     </div>
 
                     &nbsp;
-                    {todo.description}
+                    {todo.title}
                 </span>
                 <div className={styles.rm}>
+                    <img src={EditImage} className={styles.imageStyle}/>
                     <img src={GarbageImage} onClick={()=>removeTodo(todo.id)} className={styles.imageStyle}/>
                 </div>
             </li>

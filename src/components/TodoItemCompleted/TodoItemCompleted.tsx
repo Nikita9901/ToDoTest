@@ -1,14 +1,15 @@
 import React, {useContext} from 'react'
 import styles from "./TodoItemCompleted.module.css"
-import {GarbageImage} from "../../duck";
+import {GarbageImage} from "../../assets";
 import Context from "../../app/context";
 
 
 
 interface TodoItemCompletedProps{
     todo:{
+        userId:number,
         id:number,
-        description:string,
+        title:string,
         completed:boolean,
     },
     index:number;
@@ -31,7 +32,7 @@ const TodoItemCompleted: React.FC<TodoItemCompletedProps>=({todo})=>{
                     </div>
 
                     &nbsp;
-                    {todo.description}
+                    {todo.title}
                 </span>
                 <div className={styles.rm}>
                     <img alt={"GarbageImage"} src={GarbageImage} onClick={()=>removeTodoCompleted(todo.id)} className={styles.imageStyle}/>

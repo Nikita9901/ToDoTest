@@ -3,8 +3,9 @@ import styles from "./TodoListCompleted.module.css";
 import {TodoItemCompleted} from "../index";
 
 interface todo{
+    userId:number,
     id:number,
-    description:string,
+    title:string,
     completed:boolean,
 }
 

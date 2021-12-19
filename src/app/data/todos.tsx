@@ -1,17 +1,17 @@
  const todosData =[
     {
         id:0,
-        description:'abcd',
+        title:'abcd',
         completed:false,
     },
     {
         id:1,
-        description:'efghi',
+        title:'efghi',
         completed:false,
     },
     {
         id:2,
-        description:'jklmn',
+        title:'jklmn',
         completed:false,
     }
 ]

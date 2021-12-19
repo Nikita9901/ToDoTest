@@ -36,8 +36,9 @@ import {TodoItem} from "../index";
 //import todosData from "../../app/data/todos";
 
 interface todo{
+    userId:number,
     id:number,
-    description:string,
+    title:string,
     completed:boolean,
 }
 

@@ -24,7 +24,6 @@ function AddTodo({onCreate}){
         if(input.value().trim()){
             onCreate(input.value())
             input.clear()
-            //setValue('')
         }
     }
 

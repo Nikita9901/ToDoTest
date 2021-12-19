@@ -1,57 +1,69 @@
 import * as React from 'react';
 import styles from './App.module.css';
 import {Text, Header, Sidebar, TodoList, AddTodo, TodoListCompleted} from "../components"
-import {logo, UserArrowImage, UserAvatarImage, TasksImage} from "../duck";
+import {logo, UserArrowImage, UserAvatarImage, TasksImage} from "../assets";
 import Context from "./context";
 
 
 function App() {
     const [todos, setTodos] = React.useState([
         {
+            userId: 0,
             id:1,
-            description:'Add Icon to Dashboard ',
+            title:'Add Icon to Dashboard ',
             completed:false,
         },
         {
+            userId: 0,
             id:2,
-            description:'Create To-Do List ',
+            title:'Create To-Do List ',
             completed:false,
         },
         {
+            userId: 0,
             id:3,
-            description:'Add Icon to Das ',
+            title:'Add Icon to Das ',
             completed:false,
         }
     ]);
     const [todosCompleted, setTodosCompleted] = React.useState([
         {
+            userId: 0,
             id:4,
-            description:'Add Icon to Dashboard',
+            title:'Add Icon to Dashboard',
             completed:true,
         },
         {
+            userId: 0,
             id:5,
-            description:'Add Icon to Dashboard',
+            title:'Add Icon to Dashboard',
             completed:true,
         },
         {
+            userId: 0,
             id:6,
-            description:'Add Icon to Dashboard',
+            title:'Add Icon to Dashboard',
             completed:true,
         }
     ]);
 
-    function addTodo(description:string){
+    function editTodo(id:number){
+
+    }
+
+    function addTodo(title:string){
         setTodos(todos.concat([{
-            description,
+            userId: 0,
             id: Date.now(),
+            title,
             completed: false
         }]))
     }
-    function addTodoCompleted(description:string){
+    function addTodoCompleted(title:string){
         setTodosCompleted(todosCompleted.concat([{
-            description,
+            userId: 0,
             id: Date.now(),
+            title,
             completed: true
         }]))
     }
@@ -72,7 +84,7 @@ function App() {
         setTodos(
             todos.map(todo =>{
                 if (todo.id === id){
-                    addTodoCompleted(todo.description);
+                    addTodoCompleted(todo.title);
                 }
                 return todo;
             })
@@ -84,9 +96,7 @@ function App() {
         setTodosCompleted(
             todosCompleted.map(todo =>{
                 if (todo.id === id){
-
-                    addTodo(todo.description);
-
+                    addTodo(todo.title);
                 }
                 return todo;
             })
@@ -94,7 +104,7 @@ function App() {
         removeTodoCompleted(id);
     }
   return (
-      <Context.Provider value={{removeTodoCompleted, removeTodo,addTodo, addTodoCompleted, toggleTodo, toggleTodoCompleted}}>
+      <Context.Provider value={{removeTodoCompleted, removeTodo, toggleTodo, toggleTodoCompleted}}>
     <div className="App">
         <Header>
             <div className={styles.LogoAndText}>
@@ -127,11 +137,11 @@ function App() {
                 <AddTodo onCreate={addTodo}/>
                 <div style={{width: "fit-content", fontSize:12, padding:4, marginTop:8, background: "#FEF6FF"}}>
                     <Text colorT={"#550DC9"}>
-                        Total: {todos.length}
+                        Total: {todos.length + todosCompleted.length}
                     </Text>
                 </div>
                 <div style={{fontSize: 16, marginTop:16, marginBottom: 8, fontWeight: 600}}>
-                    To do
+                    To do({todos.length})
                 </div>
                 <div>
 
