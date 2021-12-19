@@ -33,7 +33,6 @@ export default TodoList*/
 import * as React from 'react';
 import styles from "./TodoList.module.css";
 import {TodoItem} from "../index";
-//import todosData from "../../app/data/todos";
 
 interface todo{
     userId:number,
@@ -52,7 +51,7 @@ const TodoList: React.FC<TodoListProps>=({todos})=>{
     if(todos!=null) {
         return (
             <div className={styles.ulStyle}>
-                <ul className={styles.ulStyle} style={{ listStyle: 'none', margin: 0, padding: 0}}>
+                <ul className={styles.ulStyle}>
                     {todos.map((todo,index)=>{
                         return(
                             <div key={todo.id}>

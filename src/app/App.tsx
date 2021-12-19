@@ -4,28 +4,19 @@ import {Text, Header, Sidebar, TodoList, AddTodo, TodoListCompleted} from "../co
 import {logo, UserArrowImage, UserAvatarImage, TasksImage} from "../assets";
 import Context from "./context";
 
-
 function App() {
-    const [todos, setTodos] = React.useState([
-        {
-            userId: 0,
-            id:1,
-            title:'Add Icon to Dashboard ',
-            completed:false,
-        },
-        {
-            userId: 0,
-            id:2,
-            title:'Create To-Do List ',
-            completed:false,
-        },
-        {
-            userId: 0,
-            id:3,
-            title:'Add Icon to Das ',
-            completed:false,
-        }
-    ]);
+    let [todos, setTodos] = React.useState([{
+        userId: 0,
+        id: 0,
+        title: '',
+        completed: false,
+    }]);
+    const apiUrl = `https://jsonplaceholder.typicode.com/todos`;
+    fetch(apiUrl)
+        .then((res) => res.json())
+        .then((repos) => {
+            setTodos(todos = repos);
+        });
     const [todosCompleted, setTodosCompleted] = React.useState([
         {
             userId: 0,
@@ -84,6 +75,7 @@ function App() {
         setTodos(
             todos.map(todo =>{
                 if (todo.id === id){
+                    todo.completed = false;
                     addTodoCompleted(todo.title);
                 }
                 return todo;
@@ -104,7 +96,7 @@ function App() {
         removeTodoCompleted(id);
     }
   return (
-      <Context.Provider value={{removeTodoCompleted, removeTodo, toggleTodo, toggleTodoCompleted}}>
+      <Context.Provider value={{removeTodoCompleted, removeTodo, toggleTodo, toggleTodoCompleted, editTodo}}>
     <div className="App">
         <Header>
             <div className={styles.LogoAndText}>
@@ -118,7 +110,7 @@ function App() {
             </div>
             <div className={styles.user}>
                 <Text>
-                    <div style={{margin:3}}>Leanne Graham</div>
+                    <div className={styles.userName}>Leanne Graham</div>
                 </Text>
                 <img className={styles.userImages} alt={"UserAvatarImage"} src={UserAvatarImage} style={{margin:5}}/>
                 <img className={styles.userImages} alt={"UserArrowImage"} src={UserArrowImage} style={{margin:6}}/>
@@ -128,19 +120,19 @@ function App() {
             <div>
                 <Sidebar>
                     <div className={styles.sideBarButton}>
-                        <img src={TasksImage}/>
+                        <img alt= {"TasksImage"} src={TasksImage}/>
                     </div>
 
                 </Sidebar>
             </div>
             <div className={styles.content}>
                 <AddTodo onCreate={addTodo}/>
-                <div style={{width: "fit-content", fontSize:12, padding:4, marginTop:8, background: "#FEF6FF"}}>
+                <div className={styles.totalTodo}>
                     <Text colorT={"#550DC9"}>
                         Total: {todos.length + todosCompleted.length}
                     </Text>
                 </div>
-                <div style={{fontSize: 16, marginTop:16, marginBottom: 8, fontWeight: 600}}>
+                <div className={styles.todoText}>
                     To do({todos.length})
                 </div>
                 <div>
@@ -150,7 +142,7 @@ function App() {
                 </div>
             </div>
             <div className={styles.comleted}>
-                <div style={{fontSize: 16, fontWeight: 600, marginBottom:8}}>
+                <div className={styles.completedText}>
                     Completed({todosCompleted.length})
                 </div>
                 <div>
@@ -160,9 +152,6 @@ function App() {
                 </div>
             </div>
         </div>
-      <Text>
-
-      </Text>
     </div>
           </Context.Provider>
   );

@@ -1,5 +1,6 @@
 .header {
     position: fixed;
+    height: 64px;
     display: flex;
     align-items: center;
     width: 100%;

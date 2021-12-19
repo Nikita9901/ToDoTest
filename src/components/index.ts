@@ -1,7 +1,6 @@
 export {default as Text} from "./Text"
 export {default as Header} from "./Header"
 export {default as Sidebar} from "./Sidebar"
-export {default as InputAndButton} from "./InputAndButton"
 export {default as TodoItem} from "./TodoItem"
 export {default as TodoList} from "./TodoList"
 export {default as AddTodo} from "./AddTodo"

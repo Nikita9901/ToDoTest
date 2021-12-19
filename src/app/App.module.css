@@ -3,6 +3,27 @@
     padding-left: 17px;
     width: 35px;
 }
+.userName{
+    margin:3px;
+}
+.totalTodo{
+    width: fit-content;
+    font-size:12px;
+    padding:4px;
+    margin-top:8px;
+    background: #FEF6FF;
+}
+.todoText{
+    font-size: 16px;
+    margin-top:16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.completedText{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom:8px;
+}
 .LogoAndText:hover{
     filter: brightness(80%);
     cursor: pointer;

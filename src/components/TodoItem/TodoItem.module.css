@@ -12,6 +12,12 @@
     box-shadow: 0 0 3px rgba(129, 129, 129, 0.07);
 
 }
+
+.todoItem{
+    display:flex;
+    align-items: center;
+}
+
 .inputStyle{
     margin-right: 8px;
 }

@@ -19,7 +19,7 @@ const TodoListCompleted: React.FC<TodoListCompletedProps>=({todos})=>{
     if(todos!=null) {
         return (
             <div className={styles.ulStyle}>
-                <ul className={styles.ulStyle} style={{ listStyle: 'none', margin: 0, padding: 0}}>
+                <ul className={styles.ulStyle}>
                     {todos.map((todo,index)=>{
                         return(
                             <div key={todo.id}>

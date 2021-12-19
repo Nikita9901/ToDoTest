@@ -65,13 +65,17 @@ interface TodoItemProps{
     index:number;
 }
 
-const TodoItem: React.FC<TodoItemProps>=({todo, index})=>{
+const TodoItem: React.FC<TodoItemProps>=({todo})=>{
     const {removeTodo} = useContext(Context)
     const {toggleTodo} = useContext(Context)
+    const {editTodo} = useContext(Context)
     if(todo!=null) {
+        if (todo.completed){
+            toggleTodo(todo.id);
+        }
         return (
             <li className={styles.item}>
-                <span style={{display:"flex", alignItems: "center"} }>
+                <span className={styles.todoItem}>
                     <div>
                         <label className={styles.checkbox}>
                             <input
@@ -91,8 +95,8 @@ const TodoItem: React.FC<TodoItemProps>=({todo, index})=>{
                     {todo.title}
                 </span>
                 <div className={styles.rm}>
-                    <img src={EditImage} className={styles.imageStyle}/>
-                    <img src={GarbageImage} onClick={()=>removeTodo(todo.id)} className={styles.imageStyle}/>
+                    <img alt={"EditImage"} src={EditImage} onClick={()=>editTodo(todo.id)} className={styles.imageStyle}/>
+                    <img alt={"GarbageImage"} src={GarbageImage} onClick={()=>removeTodo(todo.id)} className={styles.imageStyle}/>
                 </div>
             </li>
         )
